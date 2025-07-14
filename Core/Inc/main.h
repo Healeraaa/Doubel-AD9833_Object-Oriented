@@ -38,6 +38,7 @@ extern "C" {
 #include "stm32f4xx_ll_dma.h"
 #include "stm32f4xx_ll_usart.h"
 #include "stm32f4xx_ll_gpio.h"
+#include "stm32f4xx_ll_spi.h"
 
 #if defined(USE_FULL_ASSERT)
 #include "stm32_assert.h"

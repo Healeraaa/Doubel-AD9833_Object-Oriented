@@ -1,5 +1,4 @@
 #include "AD9833.h"
-uint16_t Wave[4] = {0x00C0, 0x2000, 0x2002, 0x2028}; // 波形选择宏对应的寄存器值
 
 spi_bus_t AD9833_dev1 =
     {
@@ -124,21 +123,21 @@ static void AD9833_WriteData(AD9833 *self, FSYNC_State_t n, uint16_t Data)
     Delay_us(1);
 }
 
-void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n, uint8_t mode)
+void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n, uint16_t wave)
 {
     switch (n)
     {
     case FSYNC_BOTH:
-        self->wave1 = Wave[mode];
-        self->wave2 = Wave[mode];
+        self->wave1 = wave;
+        self->wave2 = wave;
         self->WriteData(self, n, self->wave1);
         break;
     case FSYNC_1:
-        self->wave1 = Wave[mode];
+        self->wave1 = wave;
         self->WriteData(self, n, self->wave1);
         break;
     case FSYNC_2:
-        self->wave2 = Wave[mode];
+        self->wave2 = wave;
         self->WriteData(self, n, self->wave2);
         break;
     default:
@@ -170,9 +169,9 @@ void AD9833_SetFrequency(AD9833 *self, FSYNC_State_t n, uint32_t freq)
     self->WriteData(self, n, FREQ_REGISTER_0 | freq_msb);
 }
 
-void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n,uint16_t phase)
+void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n, uint16_t phase)
 {
-    uint16_t data,phase_temp ;
+    uint16_t data, phase_temp;
     switch (n)
     {
     case FSYNC_BOTH:
@@ -193,15 +192,14 @@ void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n,uint16_t phase)
     self->WriteData(self, n, data);
 }
 
-void Ad9833_SetWave(AD9833 *self,uint8_t mode1,uint8_t mode2,uint32_t freq1,uint32_t freq2,uint16_t phase1,uint16_t phase2)
+void Ad9833_SetWave(AD9833 *self, uint16_t Wave1, uint16_t Wave2, uint32_t freq1, uint32_t freq2, uint16_t phase1, uint16_t phase2)
 {
-    self->wave1 = Wave[mode1]; // 设置波形模式
-    self->wave2 = Wave[mode2]; // 设置波形模式    
-    self->freq1 = freq1;       // 设置信号频率
-    self->freq2 = freq2;       // 设置信号频率
+    self->wave1 = Wave1;            // 设置波形模式
+    self->wave2 = Wave2;            // 设置波形模式
+    self->freq1 = freq1;            // 设置信号频率
+    self->freq2 = freq2;            // 设置信号频率
     self->phase1 = phase1 & 0x0FFF; // 确保相位值在 0-4095 范围内
     self->phase2 = phase2 & 0x0FFF; // 确保相位值在 0-4095 范围内
-
 
     self->WriteData(self, FSYNC_BOTH, 0x0100); // 复位
     self->WriteData(self, FSYNC_BOTH, 0x2100); // 选择写入
@@ -210,22 +208,27 @@ void Ad9833_SetWave(AD9833 *self,uint8_t mode1,uint8_t mode2,uint32_t freq1,uint
     Delay_ms(1);
     self->SetFrequency(self, FSYNC_2, self->freq2); // 设置频率
     Delay_ms(1);
-    self->SetPhase(self, FSYNC_1,self->phase1); // 设置Phase1
+    self->SetPhase(self, FSYNC_1, self->phase1); // 设置Phase1
     Delay_ms(1);
-    self->SetPhase(self, FSYNC_2,self->phase2); // 设置Phase2
+    self->SetPhase(self, FSYNC_2, self->phase2); // 设置Phase2
     Delay_ms(1);
-    self->WaveMode(self, FSYNC_1, self->wave1); // 设置波形模式
-    Delay_ms(1);
-    self->WaveMode(self, FSYNC_2, self->wave2); // 设置波形模式
-    Delay_ms(1);
-    self->WriteData(self, FSYNC_BOTH, 0x2000); // 清除复位，启动输出
-    Delay_ms(1);
+    if (self->wave1 == self->wave2)
+    {
+        self->WaveMode(self, FSYNC_BOTH, self->wave1); // 设置波形模式
+        Delay_ms(1);
+    }
+    else
+    {
+        self->WaveMode(self, FSYNC_1, self->wave1); // 设置波形模式
+        Delay_ms(1);
+        self->WaveMode(self, FSYNC_2, self->wave2); // 设置波形模式
+        Delay_ms(1);
+    }
+
+    // 6. 【关键】清除复位位，启动输出
+    // self->WriteData(self, FSYNC_BOTH, 0x2000); // 清除RESET位，启动输出
+    // Delay_ms(1);
 }
-
-// void Ad9833_SetPara(AD9833 *self,uint8_t mode1,uint8_t mode2,uint32_t freq1,uint32_t freq2,uint16_t phase1,uint16_t phase2)
-// {
-
-// }
 
 // 初始化AD9833
 void AD9833_Init(AD9833 *self)
@@ -239,7 +242,7 @@ void AD9833_Init(AD9833 *self)
 }
 
 // 创建 AD9833 对象
-AD9833 *AD9833_Create(uint32_t mclk,  spi_bus_t *pins)
+AD9833 *AD9833_Create(uint32_t mclk, spi_bus_t *pins)
 {
     AD9833 *obj = (AD9833 *)malloc(sizeof(AD9833));
     if (obj == NULL)
@@ -257,7 +260,7 @@ AD9833 *AD9833_Create(uint32_t mclk,  spi_bus_t *pins)
     // 设置时钟频率
     obj->mclk = mclk;
     // obj->wave1 = Wave[mode]; // 设置波形模式
-    // obj->wave2 = Wave[mode]; // 设置波形模式    
+    // obj->wave2 = Wave[mode]; // 设置波形模式
     // obj->freq1 = freq;       // 设置信号频率
     // obj->freq2 = freq;       // 设置信号频率
     // obj->phase1 = phase & 0x0FFF; // 确保相位值在 0-4095 范围内

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Project\Project.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Project\Project.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Jul 14 18:22:04 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060061: Last Updated: Mon Jul 14 20:37:46 2025
 <BR><P>
 <H3>Maximum Stack Usage =        176 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -488,13 +488,11 @@ Global Symbols
 <P><STRONG><a name="[61]"></a>AD9833_SetPhase</STRONG> (Thumb, 32 bytes, Stack size 0 bytes, ad9833.o(i.AD9833_SetPhase))
 <BR>[Address Reference Count : 1]<UL><LI> ad9833.o(i.AD9833_Create)
 </UL>
-<P><STRONG><a name="[5f]"></a>AD9833_WaveMode</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, ad9833.o(i.AD9833_WaveMode))
-<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = AD9833_WaveMode
-</UL>
+<P><STRONG><a name="[5f]"></a>AD9833_WaveMode</STRONG> (Thumb, 26 bytes, Stack size 0 bytes, ad9833.o(i.AD9833_WaveMode))
 <BR>[Address Reference Count : 1]<UL><LI> ad9833.o(i.AD9833_Create)
 </UL>
-<P><STRONG><a name="[62]"></a>Ad9833_SetWave</STRONG> (Thumb, 190 bytes, Stack size 24 bytes, ad9833.o(i.Ad9833_SetWave))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = Ad9833_SetWave &rArr; Delay_ms
+<P><STRONG><a name="[62]"></a>Ad9833_SetWave</STRONG> (Thumb, 170 bytes, Stack size 16 bytes, ad9833.o(i.Ad9833_SetWave))
+<BR><BR>[Stack]<UL><LI>Max Depth = 32<LI>Call Chain = Ad9833_SetWave &rArr; Delay_ms
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Delay_ms
 </UL>
@@ -673,7 +671,7 @@ Global Symbols
 
 <P><STRONG><a name="[93]"></a>__scatterload_zeroinit</STRONG> (Thumb, 14 bytes, Stack size unknown bytes, handlers.o(i.__scatterload_zeroinit), UNUSED)
 
-<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 156 bytes, Stack size 16 bytes, main.o(i.main))
+<P><STRONG><a name="[5b]"></a>main</STRONG> (Thumb, 158 bytes, Stack size 16 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = main &rArr; MX_USART1_UART_Init &rArr; LL_USART_Init &rArr; LL_USART_SetBaudRate &rArr; __aeabi_uldivmod
 </UL>
 <BR>[Calls]<UL><LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MX_USART1_UART_Init

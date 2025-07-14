@@ -19,6 +19,7 @@ project\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h
 project\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h
 project\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
 project\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h
+project\stm32f4xx_it.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h
 project\stm32f4xx_it.o: ../Core/Inc/stm32f4xx_it.h
 project\stm32f4xx_it.o: ../Hardware/Serial.h
 project\stm32f4xx_it.o: D:\Keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h

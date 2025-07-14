@@ -113,7 +113,8 @@ int main(void)
   {
     AD9833_Init(ad9833);
   }
-  ad9833->SetWave(ad9833, WAVE_SINE, WAVE_SINE, 1000, 1000, 0, 0);
+  ad9833->SetWave(ad9833, WAVE_SINE, WAVE_TRIANGLE, 10000, 10000, 2048, 0);
+  // ad9833->WaveMode(ad9833, FSYNC_1, WAVE_TRIANGLE); // 设置波形模式为正弦波
 
   // AD9833_WaveMode(ad9833, FSYNC_BOTH, WAVE_SINE);
   // Delay_ms(1);

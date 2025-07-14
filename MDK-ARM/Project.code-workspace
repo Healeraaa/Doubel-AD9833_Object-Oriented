@@ -2,17 +2,8 @@
     "folders": [
         {
             "path": "."
-        },
-        {
-            "name": "3.Double_AD9833",
-            "path": ".."
         }
     ],
-    "settings": {
-        "files.associations": {
-            "stdint.h": "c",
-            "delay.h": "c"
-        }
-    },
+    "settings": {},
     "extensions": {}
 }

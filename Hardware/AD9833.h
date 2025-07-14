@@ -12,10 +12,10 @@
 #define PHASE_REGISTER_0 0xC000
 
 // 波形选择宏
-#define WAVE_NONE    0
-#define WAVE_SINE    1
-#define WAVE_TRIANGLE 2
-#define WAVE_SQUARE   3
+#define WAVE_NONE       0x00C0
+#define WAVE_SINE       0x2000
+#define WAVE_TRIANGLE   0x2002
+#define WAVE_SQUARE     0x2028
 
 typedef struct
 {
@@ -41,10 +41,10 @@ typedef enum {
 typedef struct AD9833 {
     // void (*SPI_Send16Bit)(struct AD9833* self, uint16_t Byte);
     void (*WriteData)(struct AD9833* self,FSYNC_State_t n, uint16_t Data);
-    void (*WaveMode)(struct AD9833 *self, FSYNC_State_t n, uint8_t mode);
+    void (*WaveMode)(struct AD9833 *self, FSYNC_State_t n, uint16_t wave);
     void (*SetFrequency)(struct AD9833 *self, FSYNC_State_t n, uint32_t freq);
     void (*SetPhase)(struct AD9833 *self, FSYNC_State_t n, uint16_t phase);
-    void (*SetWave)(struct AD9833 *self,uint8_t mode1,uint8_t mode2,uint32_t freq1,uint32_t freq2,uint16_t phase1,uint16_t phase2);
+    void (*SetWave)(struct AD9833 *self,uint16_t Wave1,uint16_t Wave2,uint32_t freq1,uint32_t freq2,uint16_t phase1,uint16_t phase2);
 
     uint32_t mclk;      // 时钟频率
     uint16_t wave1;       //波形模式
@@ -62,9 +62,9 @@ typedef struct AD9833 {
 AD9833 *AD9833_Create(uint32_t mclk, spi_bus_t *pins);
 void AD9833_Destroy(AD9833* obj);
 void AD9833_Init(AD9833* self);
-void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n,uint8_t mode);
-void AD9833_SetFrequency(AD9833 *self, FSYNC_State_t n, uint32_t freq);
-void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n,uint16_t phase);
+// void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n, uint16_t wave);
+// void AD9833_SetFrequency(AD9833 *self, FSYNC_State_t n, uint32_t freq);
+// void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n,uint16_t phase);
 
 extern spi_bus_t AD9833_dev1;
 

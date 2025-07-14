@@ -22,6 +22,7 @@ project\serial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_pwr.h
 project\serial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_dma.h
 project\serial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usart.h
 project\serial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_gpio.h
+project\serial.o: ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_spi.h
 project\serial.o: ..\Hardware\AD9833.h
 project\serial.o: D:\Keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 project\serial.o: ../SYS/Delay.h
