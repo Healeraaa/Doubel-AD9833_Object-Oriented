@@ -113,7 +113,8 @@ int main(void)
   {
     AD9833_Init(ad9833);
   }
-  ad9833->SetWave(ad9833, WAVE_SINE, WAVE_SINE, 1000, 2000, 2048, 2048);
+  ad9833->SetWave(ad9833, WAVE_SINE, WAVE_SINE, 1000, 1000, 0, 0);
+
   // AD9833_WaveMode(ad9833, FSYNC_BOTH, WAVE_SINE);
   // Delay_ms(1);
   // AD9833_SetFrequency(ad9833, FSYNC_BOTH, 1000);  
