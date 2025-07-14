@@ -108,12 +108,20 @@ int main(void)
   // Delay_ms(2);
   // Ad9833_single(1,500,2048);
 
-  AD9833 *ad9833 = AD9833_Create(25000000,WAVE_SINE,1000,0, &AD9833_dev1);
+  AD9833 *ad9833 = AD9833_Create(25000000, &AD9833_dev1);
   if (ad9833 != NULL)
   {
     AD9833_Init(ad9833);
   }
-  ad9833->SetWave(ad9833);
+  ad9833->SetWave(ad9833, WAVE_SINE, WAVE_SINE, 1000, 2000, 2048, 2048);
+  // AD9833_WaveMode(ad9833, FSYNC_BOTH, WAVE_SINE);
+  // Delay_ms(1);
+  // AD9833_SetFrequency(ad9833, FSYNC_BOTH, 1000);  
+  // Delay_ms(1);
+  // AD9833_SetPhase(ad9833, FSYNC_BOTH, 2048);
+  // Delay_ms(1);
+  // AD9833_SetFrequency(ad9833, FSYNC_1, 3000); 
+
 
   /* USER CODE END 2 */
 
@@ -131,10 +139,10 @@ int main(void)
     // Ad9833_SetFrequency(1000, 25000000);
     // LL_GPIO_TogglePin(GPIOC, LL_GPIO_PIN_13);
 
-    if (Serial_GetRxFlag() == 1)
-    {
-      USART_ComandTask(Serial_RxPacket[0]);
-    }
+    // if (Serial_GetRxFlag() == 1)
+    // {
+    //   USART_ComandTask(Serial_RxPacket[0]);
+    // }
 
     // AD9833_WaveMode(3);
     // Delay_ms(2);

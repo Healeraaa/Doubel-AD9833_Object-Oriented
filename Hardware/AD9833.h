@@ -36,39 +36,35 @@ typedef enum {
 } FSYNC_State_t;
 
 
-// typedef struct {
-//     void (*SDATA)(int state);  // 控制 SDATA 引脚
-//     void (*SCLK)(int state);   // 控制 SCLK 引脚
-//     void (*FSYNC_High)(int state);  // 控制 FSYNC 引脚
-//     void (*FSYNC_Low)(int state);  // 控制 FSYNC 引脚
-// } AD9833_Pins;
 
 // 定义 AD9833 结构体
 typedef struct AD9833 {
     // void (*SPI_Send16Bit)(struct AD9833* self, uint16_t Byte);
-    void (*WriteData)(struct AD9833* self,uint8_t n, uint16_t Data);
-    void (*WaveMode)(struct AD9833 *self, uint8_t n);
-    void (*SetFrequency)(struct AD9833 *self, uint8_t n);
-    void (*SetPhase)(struct AD9833 *self, uint8_t n);
-    void (*SetWave)(struct AD9833 *self);
+    void (*WriteData)(struct AD9833* self,FSYNC_State_t n, uint16_t Data);
+    void (*WaveMode)(struct AD9833 *self, FSYNC_State_t n, uint8_t mode);
+    void (*SetFrequency)(struct AD9833 *self, FSYNC_State_t n, uint32_t freq);
+    void (*SetPhase)(struct AD9833 *self, FSYNC_State_t n, uint16_t phase);
+    void (*SetWave)(struct AD9833 *self,uint8_t mode1,uint8_t mode2,uint32_t freq1,uint32_t freq2,uint16_t phase1,uint16_t phase2);
 
-    uint16_t Wave[4];   // 波形选择数组
     uint32_t mclk;      // 时钟频率
-    uint8_t mode;       //波形模式
-    uint32_t freq;      //信号频率
-    uint16_t phase[2];      //phase[0]为AD9833_1的相位；phase[1]为AD9833_2的相位
+    uint16_t wave1;       //波形模式
+    uint16_t wave2;       //波形模式
+    uint32_t freq1;      //信号频率
+    uint32_t freq2;      //信号频率
+    uint16_t phase1;  
+    uint16_t phase2;      
 
     // AD9833_Pins pins;  // 引脚控制对象
     spi_bus_t *pins;  // 引脚控制对象    
 } AD9833;
 
 // 公有方法声明
-AD9833 *AD9833_Create(uint32_t mclk, uint8_t mode, uint32_t freq, uint16_t phase,spi_bus_t *pins);
+AD9833 *AD9833_Create(uint32_t mclk, spi_bus_t *pins);
 void AD9833_Destroy(AD9833* obj);
 void AD9833_Init(AD9833* self);
-void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n);
-void AD9833_SetFrequency(AD9833 *self, FSYNC_State_t n);
-void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n);
+void AD9833_WaveMode(AD9833 *self, FSYNC_State_t n,uint8_t mode);
+void AD9833_SetFrequency(AD9833 *self, FSYNC_State_t n, uint32_t freq);
+void AD9833_SetPhase(AD9833 *self, FSYNC_State_t n,uint16_t phase);
 
 extern spi_bus_t AD9833_dev1;
 
