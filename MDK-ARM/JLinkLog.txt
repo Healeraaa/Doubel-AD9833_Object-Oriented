@@ -1,0 +1,126 @@
+T19EC 000:373.032   SEGGER J-Link V7.22b Log File
+T19EC 000:373.669   DLL Compiled: Jun 17 2021 17:22:49
+T19EC 000:373.683   Logging started @ 2024-11-14 06:28
+T19EC 000:373.696 - 373.702ms
+T19EC 000:373.893 JLINK_SetWarnOutHandler(...)
+T19EC 000:374.078 - 0.192ms
+T19EC 000:374.095 JLINK_OpenEx(...)
+T19EC 000:389.918   Looking for J-Link GUI Server exe at: D:\ARM\Segger\JLinkGUIServer.exe
+T19EC 000:390.070   Looking for J-Link GUI Server exe at: \JLinkGUIServer.exe
+T19EC 000:690.016   Failed to connect to J-Link GUI Server.
+T19EC 003:834.868   TELNET listener socket opened on port 19021
+T19EC 003:835.220   WEBSRV Starting webserver
+T19EC 003:835.519   WEBSRV Webserver running on local port 19080
+T19EC 003:835.598 - 3462.045ms returns "O.K."
+T19EC 003:836.213 JLINK_GetEmuCaps()
+T19EC 003:836.222 - 0.010ms returns 0x98E61B83
+T19EC 003:836.233 JLINK_TIF_GetAvailable(...)
+T19EC 003:836.239 - 0.008ms
+T19EC 003:836.246 JLINK_SetErrorOutHandler(...)
+T19EC 003:836.251 - 0.007ms
+T19EC 003:836.310 JLINK_ExecCommand("ProjectFile = "D:\STM32Cube\STM32F407Project\面向对象\407_AD9833\MDK-ARM\JLinkSettings.ini"", ...). 
+T19EC 003:873.783 - 37.484ms returns 0x00
+T19EC 003:875.550 JLINK_ExecCommand("Device = STM32F407VGTx", ...). 
+T19EC 003:876.101   Device "STM32F407VG" selected.
+T19EC 003:876.527 - 0.964ms returns 0x00
+T19EC 003:876.545 JLINK_GetHardwareVersion()
+T19EC 003:878.139 - 1.602ms returns 20000
+T19EC 003:878.153 JLINK_GetDLLVersion()
+T19EC 003:878.158 - 0.007ms returns 72202
+T19EC 003:878.164 JLINK_GetOEMString(...)
+T19EC 003:878.169 JLINK_GetFirmwareString(...)
+T19EC 003:878.176 - 0.009ms
+T19EC 003:878.185 JLINK_GetDLLVersion()
+T19EC 003:878.190 - 0.006ms returns 72202
+T19EC 003:878.196 JLINK_GetCompileDateTime()
+T19EC 003:878.200 - 0.006ms
+T19EC 003:878.207 JLINK_GetFirmwareString(...)
+T19EC 003:878.212 - 0.006ms
+T19EC 003:878.218 JLINK_GetHardwareVersion()
+T19EC 003:878.222 - 0.006ms returns 20000
+T19EC 003:878.229 JLINK_GetSN()
+T19EC 003:878.233 - 0.006ms returns 1046507225
+T19EC 003:878.240 JLINK_GetOEMString(...)
+T19EC 010:829.243 JLINK_TIF_Select(JLINKARM_TIF_JTAG)
+T19EC 010:829.292   
+  ***** Error: 
+T19EC 010:829.300   Debugger tries to select target interface JTAG.
+This interface is not supported by the connected emulator.
+Selection will be ignored by the DLL.
+T19EC 010:829.307 - 0.066ms returns 0x01
+T19EC 010:829.320 JLINK_HasError()
+T19EC 010:829.343 JLINK_SetSpeed(5000)
+T19EC 010:829.357 - 0.016ms
+T19EC 010:829.857 JLINK_HasError()
+T19EC 010:829.873 JLINK_SetResetType(JLINKARM_RESET_TYPE_NORMAL)
+T19EC 010:829.881 - 0.010ms returns JLINKARM_RESET_TYPE_NORMAL
+T19EC 010:829.889 JLINK_Reset()
+T19EC 010:839.982   InitTarget() start
+T19EC 010:840.008    J-Link Script File: Executing InitTarget()
+T19EC 010:902.128   WARNING: Unknown DEV_ID found: 0x00000414
+T19EC 010:902.186   Security detection skipped.
+T19EC 010:906.139   InitTarget() end
+T19EC 010:916.038   Found SW-DP with ID 0x1BA01477
+T19EC 010:921.992   Old FW that does not support reading DPIDR via DAP jobs
+T19EC 010:924.025   DPv0 detected
+T19EC 010:924.085   Scanning AP map to find all available APs
+T19EC 010:928.201   AP[1]: Stopped AP scan as end of AP map has been reached
+T19EC 010:928.283   AP[0]: AHB-AP (IDR: 0x14770011)
+T19EC 010:928.316   Iterating through AP map to find AHB-AP to use
+T19EC 010:932.152   AP[0]: Core found
+T19EC 010:932.233   AP[0]: AHB-AP ROM base: 0xE00FF000
+T19EC 010:934.109   CPUID register: 0x411FC231. Implementer code: 0x41 (ARM)
+T19EC 010:934.170   Found Cortex-M3 r1p1, Little endian.
+T19EC 011:037.231   Identified core does not match configuration. (Found: Cortex-M3, Configured: Cortex-M4)
+T19EC 011:037.416   -- Max. mem block: 0xFFFFFEFA
+T19EC 011:037.486    -- CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T19EC 011:047.058    -- CPU_ReadMem(4 bytes @ 0xE0002000)
+T19EC 011:057.353   FPUnit: 6 code (BP) slots and 2 literal slots
+T19EC 011:057.440    -- CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T19EC 011:067.072    -- CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T19EC 011:081.043    -- CPU_ReadMem(4 bytes @ 0xE0001000)
+T19EC 011:091.367    -- CPU_WriteMem(4 bytes @ 0xE0001000)
+T19EC 011:105.191    -- CPU_ReadMem(4 bytes @ 0xE000ED88)
+T19EC 011:115.116    -- CPU_WriteMem(4 bytes @ 0xE000ED88)
+T19EC 011:129.351    -- CPU_ReadMem(4 bytes @ 0xE000ED88)
+T19EC 011:139.107    -- CPU_WriteMem(4 bytes @ 0xE000ED88)
+T19EC 011:153.098   CoreSight components:
+T19EC 011:153.203   ROMTbl[0] @ E00FF000
+T19EC 011:153.263    -- CPU_ReadMem(64 bytes @ 0xE00FF000)
+T19EC 011:166.140    -- CPU_ReadMem(32 bytes @ 0xE000EFE0)
+T19EC 011:176.020   ROMTbl[0][0]: E000E000, CID: B105E00D, PID: 001BB000 SCS
+T19EC 011:176.098    -- CPU_ReadMem(32 bytes @ 0xE0001FE0)
+T19EC 011:186.095   ROMTbl[0][1]: E0001000, CID: B105E00D, PID: 001BB002 DWT
+T19EC 011:186.136    -- CPU_ReadMem(32 bytes @ 0xE0002FE0)
+T19EC 011:196.088   ROMTbl[0][2]: E0002000, CID: B105E00D, PID: 000BB003 FPB
+T19EC 011:196.125    -- CPU_ReadMem(32 bytes @ 0xE0000FE0)
+T19EC 011:206.288   ROMTbl[0][3]: E0000000, CID: B105E00D, PID: 001BB001 ITM
+T19EC 011:206.336    -- CPU_ReadMem(32 bytes @ 0xE0040FE0)
+T19EC 011:216.066   ROMTbl[0][4]: E0040000, CID: B105900D, PID: 001BB923 TPIU-Lite
+T19EC 011:216.116    -- CPU_ReadMem(32 bytes @ 0xE0041FE0)
+T19EC 011:226.349   ROMTbl[0][5]: E0041000, CID: B105900D, PID: 101BB924 ETM-M3
+T19EC 011:226.568   CPU is running
+T19EC 011:226.590    -- CPU_WriteMem(4 bytes @ 0xE000EDF0)
+T19EC 011:239.961   CPU is running
+T19EC 011:239.981    -- CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T19EC 011:254.090   Reset: Halt core after reset via DEMCR.VC_CORERESET.
+T19EC 011:256.336   Reset: Reset device via AIRCR.SYSRESETREQ.
+T19EC 011:256.372   CPU is running
+T19EC 011:256.389    -- CPU_WriteMem(4 bytes @ 0xE000ED0C)
+T19EC 011:326.104    -- CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T19EC 011:336.193    -- CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T19EC 011:346.046   CPU is running
+T19EC 011:346.137    -- CPU_WriteMem(4 bytes @ 0xE000EDF0)
+T19EC 011:360.053   CPU is running
+T19EC 011:360.152    -- CPU_WriteMem(4 bytes @ 0xE000EDFC)
+T19EC 011:380.067    -- CPU_ReadMem(4 bytes @ 0xE000EDF0)
+T19EC 011:434.020    -- CPU_WriteMem(4 bytes @ 0xE0002000)
+T19EC 011:448.036    -- CPU_ReadMem(4 bytes @ 0xE000EDFC)
+T19EC 011:457.967    -- CPU_ReadMem(4 bytes @ 0xE0001000)
+T19EC 011:468.011 - 638.136ms
+T19EC 011:468.040 JLINK_GetId()
+T19EC 011:470.000 - 1.967ms returns 0x1BA01477
+T19EC 011:482.653 JLINK_GetFirmwareString(...)
+T19EC 011:482.702 - 0.057ms
+T19EC 017:907.830 JLINK_Close()
+T19EC 017:912.198    -- CPU_ReadMem(4 bytes @ 0xE0001000)

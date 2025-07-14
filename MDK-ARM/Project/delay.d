@@ -1,0 +1,10 @@
+project\delay.o: ..\SYS\Delay.c
+project\delay.o: ..\SYS\Delay.h
+project\delay.o: D:\Keil\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+project\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f407xx.h
+project\delay.o: ../Drivers/CMSIS/Include/core_cm4.h
+project\delay.o: ../Drivers/CMSIS/Include/cmsis_version.h
+project\delay.o: ../Drivers/CMSIS/Include/cmsis_compiler.h
+project\delay.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
+project\delay.o: ../Drivers/CMSIS/Include/mpu_armv7.h
+project\delay.o: ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h
